@@ -52,7 +52,7 @@
     <body>
         
         
-    <div class="book" data-level="15" data-chapter-title="Common Headers" data-filepath="headers/CommonHeaders.md" data-basepath=".." data-revision="Fri Jun 10 2016 10:09:27 GMT+0000 (UTC)" data-innerlanguage="">
+    <div class="book" data-level="15" data-chapter-title="Common Headers" data-filepath="headers/CommonHeaders.md" data-basepath=".." data-revision="Fri Jun 10 2016 10:14:16 GMT+0000 (UTC)" data-innerlanguage="">
     
 
 <div class="book-summary">
@@ -414,7 +414,7 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="common-headers"><a name="common-headers" class="plugin-anchor" href="#common-headers"><span class="fa fa-link"></span></a>Common Headers</h1>
-<p>This section describes a handful of headers, which we found raised the most questions in our daily usage.</p>
+<p>This section describes a handful of headers, which we found raised the most questions in our daily usage, or which are useful in particular circumstances but not widely known.</p>
 <h2 id="contentlocation"><a name="contentlocation" class="plugin-anchor" href="#contentlocation"><span class="fa fa-link"></span></a>Content-Location</h2>
 <p>This header is used in the response of either a successful read (GET, HEAD) or successful write operation (PUT, POST or PATCH).</p>
 <p>In the case of the GET requests it points to a location where an alternate representation of the
@@ -435,6 +435,23 @@ not necessary.</p>
 <p>If your API returns the new representation after a PUT, PATCH, or POST you should include the Content-Location header
 to make it explicit, that the returned resource is an up-to-date version.</p>
 <p>More details in <a href="https://tools.ietf.org/html/rfc7231#section-3.1.4.2" target="_blank">rfc7231</a></p>
+<h2 id="could-use-the-prefer-header-to-indicate-processing-preferences"><a name="could-use-the-prefer-header-to-indicate-processing-preferences" class="plugin-anchor" href="#could-use-the-prefer-header-to-indicate-processing-preferences"><span class="fa fa-link"></span></a><span style="color:green;font-weight:bold">Could:</span> Use the Prefer header to indicate processing preferences</h2>
+<p>The  <code>Prefer</code> header defined in <a href="https://tools.ietf.org/html/rfc7240" target="_blank">RFC7240</a> allows clients to request processing behaviors from servers. <a href="https://tools.ietf.org/html/rfc7240" target="_blank">RFC7240</a> pre-defines a number of preferences and is extensible, to allow others to be defined. Support for the Prefer header is entirely optional and at the discretion of API designers, but as an existing Internet Standard, is recommended over defining proprietary &quot;X-&quot; headers for processing directives. </p>
+<p>The <code>Prefer</code> header can defined like this in an API definition:</p>
+<pre><code class="lang-yaml">  Prefer:
+    name: Prefer
+    description: |
+      The RFC7240 Prefer header indicates that particular server 
+      behaviors are preferred by the client but are not required 
+      for successful completion of the request. 
+
+      # (indicate the preferences supported by the API)
+
+    in: header
+    type: string  
+    required: false
+</code></pre>
+<p>Supporting APIs may return the <code>Preference-Applied</code> header also defined in <a href="https://tools.ietf.org/html/rfc7240" target="_blank">RFC7240</a> to indicate whether the preference was applied.</p>
 
                     
                     </section>
