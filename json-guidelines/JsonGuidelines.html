@@ -52,7 +52,7 @@
     <body>
         
         
-    <div class="book" data-level="6" data-chapter-title="JSON Guidelines" data-filepath="json-guidelines/JsonGuidelines.md" data-basepath=".." data-revision="Wed Jun 22 2016 21:38:59 GMT+0000 (UTC)" data-innerlanguage="">
+    <div class="book" data-level="6" data-chapter-title="JSON Guidelines" data-filepath="json-guidelines/JsonGuidelines.md" data-basepath=".." data-revision="Wed Jun 22 2016 22:30:08 GMT+0000 (UTC)" data-innerlanguage="">
     
 
 <div class="book-summary">
@@ -434,9 +434,16 @@
 <h3 id="should-enumerations-should-be-represented-as-strings"><a name="should-enumerations-should-be-represented-as-strings" class="plugin-anchor" href="#should-enumerations-should-be-represented-as-strings"><span class="fa fa-link"></span></a><span style="color:darkgoldenrod;font-weight:bold">Should:</span> Enumerations should be represented as Strings</h3>
 <p>Strings are a reasonable target for values that are by design enumerations. </p>
 <h3 id="should-date-property-values-should-conform-to-rfc-3399"><a name="should-date-property-values-should-conform-to-rfc-3399" class="plugin-anchor" href="#should-date-property-values-should-conform-to-rfc-3399"><span class="fa fa-link"></span></a><span style="color:darkgoldenrod;font-weight:bold">Should:</span> Date property values should conform to RFC 3399</h3>
-<p>Use the date and time formats defined by <a href="http://tools.ietf.org/html/rfc3339#section-5.6" target="_blank">RFC 3339</a> &#x2014; e.g. <code>2015-05-28T14:09:17+02:00</code> for a point in time (note that the  <a href="https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types" target="_blank">OpenAPI format</a> &quot;date-time&quot; corresponds to &quot;date-time&quot; in the RFC) and <code>2015-05-28</code> for a date (note that the OpenAPI format &quot;date&quot; corresponds to &quot;full-date&quot; in the RFC). Both are specific profiles, a subset of the international standard <a href="http://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>.</p>
-<p>A zone offset could be used, however, we encourage  restricting dates to UTC and without offsets:  for example <code>2015-05-28T14:07:17Z</code> rather than <code>2015-05-28T14:07:17+00:00</code>. From experience we have learned that zone offsets are not easy to understand and often not correctly handled. Note also that zone offsets are different from local times that might be including daylight saving time. Localization of dates should be done by the services that provide user interfaces, if required.</p>
-<p>When it comes to storage, all dates should be consistently stored in UTC without a zone offset. </p>
+<p>Use the date and time formats defined by <a href="http://tools.ietf.org/html/rfc3339#section-5.6" target="_blank">RFC 3339</a>:</p>
+<ul>
+<li><p>for &quot;date&quot; use strings matching <code>date-fullyear &quot;-&quot; date-month &quot;-&quot; date-mday</code>, for example: <code>2015-05-28</code> </p>
+</li>
+<li><p>for &quot;date-time&quot; use strings matching <code>full-date &quot;T&quot; full-time</code>, for example <code>2015-05-28T14:07:17Z</code></p>
+</li>
+</ul>
+<p>Note that the  <a href="https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types" target="_blank">OpenAPI format</a> &quot;date-time&quot; corresponds to &quot;date-time&quot; in the RFC) and <code>2015-05-28</code> for a date (note that the OpenAPI format &quot;date&quot; corresponds to &quot;full-date&quot; in the RFC). Both are specific profiles, a subset of the international standard <a href="http://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>.</p>
+<p>A zone offset may be used (both, in request and responses) -- this is simply defined by the standards. However, we encourage restricting dates to UTC and without offsets. For example <code>2015-05-28T14:07:17Z</code> rather than <code>2015-05-28T14:07:17+00:00</code>. From experience we have learned that zone offsets are not easy to understand and often not correctly handled. Note also that zone offsets are different from local times that might be including daylight saving time. Localization of dates should be done by the services that provide user interfaces, if required.</p>
+<p>When it comes to storage, all dates should be consistently stored in UTC without a zone offset. Localization should be done locally by the services that provide user interfaces, if required.</p>
 <p>Sometimes it can seem data is naturally represented using numerical timestamps, but this can introduce interpretation issues with precision - for example whether to represent a timestamp as 1460062925, 1460062925000 or 1460062925.000. Date strings, though more verbose and requiring more effort to parse, avoid this ambiguity.</p>
 <h3 id="could-time-durations-and-intervals-could-conform-to-iso-8601"><a name="could-time-durations-and-intervals-could-conform-to-iso-8601" class="plugin-anchor" href="#could-time-durations-and-intervals-could-conform-to-iso-8601"><span class="fa fa-link"></span></a><span style="color:green;font-weight:bold">Could:</span> Time durations and intervals could conform to ISO 8601</h3>
 <p>Schema based JSON properties that are by design durations and intervals could be strings formatted as recommended by ISO 8601 (<a href="https://tools.ietf.org/html/rfc3339#appendix-A" target="_blank">Appendix A of RFC 3399 contains a grammar</a> for durations). </p>

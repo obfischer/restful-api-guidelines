@@ -52,7 +52,7 @@
     <body>
         
         
-    <div class="book" data-level="13" data-chapter-title="Data Formats" data-filepath="data-formats/DataFormats.md" data-basepath=".." data-revision="Wed Jun 22 2016 21:38:59 GMT+0000 (UTC)" data-innerlanguage="">
+    <div class="book" data-level="13" data-chapter-title="Data Formats" data-filepath="data-formats/DataFormats.md" data-basepath=".." data-revision="Wed Jun 22 2016 22:30:08 GMT+0000 (UTC)" data-innerlanguage="">
     
 
 <div class="book-summary">
@@ -418,14 +418,10 @@
 <p>JSON-encode the body payload. The JSON payload must follow <a href="https://tools.ietf.org/html/rfc7159" target="_blank">RFC-7159</a> by having
 (if possible) a serialized object or array as the top-level object.</p>
 <h2 id="must-use-standard-date-and-time-formats"><a name="must-use-standard-date-and-time-formats" class="plugin-anchor" href="#must-use-standard-date-and-time-formats"><span class="fa fa-link"></span></a><span style="color:red;font-weight:bold">Must:</span> Use Standard Date and Time Formats</h2>
-<ul>
-<li><p>Inside the JSON payload, use the date and time formats defined by <a href="http://tools.ietf.org/html/rfc3339#section-5.6" target="_blank">RFC 3339</a> &#x2014; e.g. <code>2015-05-28T14:09:17+02:00</code> for a point in time (note that the  <a href="https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types" target="_blank">OpenAPI format</a> &quot;date-time&quot; corresponds to &quot;date-time&quot; in the RFC) and <code>2015-05-28</code> for a date (note that the OpenAPI format &quot;date&quot; corresponds to &quot;full-date&quot; in the RFC). Both are specific profiles, a subset of the international standard <a href="http://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>.</p>
-</li>
-<li><p>In HTTP headers (including the proprietary headers), use the <a href="http://tools.ietf.org/html/rfc7231#section-7.1.1.1" target="_blank">HTTP date format defined in RFC 7231</a>.</p>
-</li>
-</ul>
-<p>A zone offset may be used (both, in request and responses) -- this is simply defined by the standards. However, we encourage to restrict to UTC (and go without offsets) when dates are passed and returned. From experience we know that zone offsets are not easy to understand and often not correctly handled. Note also, that zone offsets are different from local times that may include daylight saving time.</p>
-<p>When it comes to storage, all dates should be consistently stored in UTC without zone offset. Localization should be done locally by the services that provide user interfaces, if required.</p>
+<h3 id="json-payload"><a name="json-payload" class="plugin-anchor" href="#json-payload"><span class="fa fa-link"></span></a>JSON Payload</h3>
+<p>Read more about date and time format in <a href="../json-guidelines/JsonGuidelines.html#date-property-values-should-conform-to-rfc-3399">Json Guideline</a>.</p>
+<h3 id="http-headers"><a name="http-headers" class="plugin-anchor" href="#http-headers"><span class="fa fa-link"></span></a>HTTP headers</h3>
+<p>Http headers including the proprietary headers. Use the <a href="http://tools.ietf.org/html/rfc7231#section-7.1.1.1" target="_blank">HTTP date format defined in RFC 7231</a>.</p>
 <h2 id="could-use-standards-for-country-language-and-currency-codes"><a name="could-use-standards-for-country-language-and-currency-codes" class="plugin-anchor" href="#could-use-standards-for-country-language-and-currency-codes"><span class="fa fa-link"></span></a><span style="color:green;font-weight:bold">Could:</span> Use Standards for Country, Language and Currency Codes</h2>
 <p>Use the following standard formats for country, language and currency codes:</p>
 <ul>
