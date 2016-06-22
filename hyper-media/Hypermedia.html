@@ -52,7 +52,7 @@
     <body>
         
         
-    <div class="book" data-level="12" data-chapter-title="Hypermedia" data-filepath="hyper-media/Hypermedia.md" data-basepath=".." data-revision="Fri Jun 10 2016 10:14:16 GMT+0000 (UTC)" data-innerlanguage="">
+    <div class="book" data-level="12" data-chapter-title="Hypermedia" data-filepath="hyper-media/Hypermedia.md" data-basepath=".." data-revision="Wed Jun 22 2016 21:38:59 GMT+0000 (UTC)" data-innerlanguage="">
     
 
 <div class="book-summary">
@@ -414,10 +414,29 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="hypermedia"><a name="hypermedia" class="plugin-anchor" href="#hypermedia"><span class="fa fa-link"></span></a>Hypermedia</h1>
+<h2 id="must-use-rest-maturity-level-2"><a name="must-use-rest-maturity-level-2" class="plugin-anchor" href="#must-use-rest-maturity-level-2"><span class="fa fa-link"></span></a><span style="color:red;font-weight:bold">Must:</span> Use REST Maturity Level 2</h2>
+<p>We strive for a good implementation of <a href="http://martinfowler.com/articles/richardsonMaturityModel.html#level2" target="_blank">REST Maturity Level 2</a> as it enables
+us to build resource-oriented APIs that make full use of HTTP verbs and status codes.
+You can see this expressed by many rules throughout these guidelines, e.g.:</p>
+<ul>
+<li><a href="../resources/Resources.html#must-avoid-actions-&#x2014;-think-about-resources">Avoid Actions &#x2014; Think About Resources</a></li>
+<li><a href="../resources/Resources.html#must-keep-urls-verbfree">Keep URLs Verb-Free</a></li>
+<li><a href="../http/Http.html#must-use-http-methods-correctly">Use HTTP Methods Correctly</a></li>
+<li><a href="../http/Http.html#must-use-meaningful-http-status-codes">Use Meaningful HTTP Status Codes</a></li>
+</ul>
+<p>Although this is not HATEOAS, it should not prevent you from designing proper link relationships in your APIs as stated in rules below.</p>
 <h2 id="could-use-hateoas"><a name="could-use-hateoas" class="plugin-anchor" href="#could-use-hateoas"><span class="fa fa-link"></span></a><span style="color:green;font-weight:bold">Could:</span> Use HATEOAS</h2>
-<p>We prefer <a href="http://martinfowler.com/articles/richardsonMaturityModel.html#level2" target="_blank">REST Maturity Level 2</a>. Only if HATEOAS - as <a href="http://martinfowler.com/articles/richardsonMaturityModel.html#level3" target="_blank">Level 3</a> - adds value to your API, consider using it. Because we are following API First, HATEOAS adds not much value for us in terms of self-descriptiveness. And we don&apos;t believe in generic HATEOAS clients which crawl and use APIs on their own. So, only use HATEOAS if your API really defines possible client actions (one part of hypermedia) and leverages other HATEOAS features.</p>
-<p>Decoupled from HATEOAS, adding links and relationships should be considered as useful addition to APIs as it adds context and helps navigation in APIs to decent degree.</p>
-<p>Additional resources: <a href="http://en.wikipedia.org/wiki/HATEOAS" target="_blank">Wikipedia</a>, <a href="http://restcookbook.com/Basics/hateoas/" target="_blank">The RESTful CookBook</a></p>
+<p>Although we prefer <a href="http://martinfowler.com/articles/richardsonMaturityModel.html#level2" target="_blank">REST Maturity Level 2</a>, we do not forbid implementing <a href="http://martinfowler.com/articles/richardsonMaturityModel.html#level3" target="_blank">Level 3</a>, which is HATEOAS (Hypertext As the Engine Of Application State). But you should be aware of the shortcomings in our setup.</p>
+<p>Because we are following API First principles, HATEOAS brings nothing new to the table in terms of API self-descriptiveness. Furthermore, generic HATEOAS clients which crawl and use APIs on their own are only a theoretical concept so far.
+Our whole internal tooling around APIs like Twintip isn&apos;t adjusted for HATEOAS neither. For now, we have not
+seen a good reason to implement HATEOAS in an API.</p>
+<p>There are several other concerns regarding the promised advantages of HATEOAS (see <a href="https://www.infoq.com/news/2014/03/rest-at-odds-with-web-apis for detailed discussion" target="_blank">RESTistential Crisis over Hypermedia APIs</a>):</p>
+<ul>
+<li>Hypermedia does not prevent clients from required manual changes when domain model changes over time</li>
+<li>Hypermedia makes sense for humans, not machines</li>
+<li>Hypermedia does not prevent API clients to implement shortcuts and directly target resources without &apos;discovering&apos; them</li>
+</ul>
+<p>If you use HATEOAS please present your findings in the <a href="https://techwiki.zalando.net/display/GUL/API+Guild" target="_blank">API Guild [internal link]</a>.</p>
 <h2 id="could-use-uris-for-custom-link-relations"><a name="could-use-uris-for-custom-link-relations" class="plugin-anchor" href="#could-use-uris-for-custom-link-relations"><span class="fa fa-link"></span></a><span style="color:green;font-weight:bold">Could:</span> Use URIs for Custom Link Relations</h2>
 <p>Related or even embedded (sub-) resources should be linked via &#x201C;meta link attributes&#x201D; within the response payload; use here the following <a href="http://stateless.co/hal_specification.html" target="_blank">HAL</a> compliant syntax:</p>
 <pre><code>{
