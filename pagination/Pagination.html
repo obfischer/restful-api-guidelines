@@ -52,7 +52,7 @@
     <body>
         
         
-    <div class="book" data-level="11" data-chapter-title="Pagination" data-filepath="pagination/Pagination.md" data-basepath=".." data-revision="Wed Jun 22 2016 22:30:08 GMT+0000 (UTC)" data-innerlanguage="">
+    <div class="book" data-level="11" data-chapter-title="Pagination" data-filepath="pagination/Pagination.md" data-basepath=".." data-revision="Fri Jun 24 2016 15:02:11 GMT+0000 (UTC)" data-innerlanguage="">
     
 
 <div class="book-summary">
@@ -415,7 +415,7 @@
                     
                         <h1 id="pagination"><a name="pagination" class="plugin-anchor" href="#pagination"><span class="fa fa-link"></span></a>Pagination</h1>
 <h2 id="must-support-pagination"><a name="must-support-pagination" class="plugin-anchor" href="#must-support-pagination"><span class="fa fa-link"></span></a><span style="color:red;font-weight:bold">Must:</span> Support Pagination</h2>
-<p>For client side batch processing and iteration experience, access to lists of data items must support pagination. This holds for all lists that are (potentially) larger than just a
+<p>Access to lists of data items must support pagination for best client side batch processing and iteration experience. This holds true for all lists that are (potentially) larger than just a
 few hundred entries.</p>
 <p>There are two page iteration techniques:</p>
 <ul>
@@ -430,14 +430,13 @@ in this <a href="https://www.smashingmagazine.com/2016/03/pagination-infinite-sc
 jumping to a specific page is far less used than navigation via next/previous page links. This favours
 cursor-based over offset-based pagination.</p>
 <h2 id="should-prefer-cursorbased-pagination-avoid-offsetbased-pagination"><a name="should-prefer-cursorbased-pagination-avoid-offsetbased-pagination" class="plugin-anchor" href="#should-prefer-cursorbased-pagination-avoid-offsetbased-pagination"><span class="fa fa-link"></span></a><span style="color:darkgoldenrod;font-weight:bold">Should:</span> Prefer Cursor-Based Pagination, Avoid Offset-Based Pagination</h2>
-<p>Cursor-based pagination is better for more efficient implementation, especially when it comes to
+<p>Cursor-based pagination is usually better and more efficient when compared to offset-based pagination. Especially when it comes to
 high-data volumes and / or storage in NoSQL databases.</p>
-<p>Before choosing offset-based pagination,  make sure that it is feasible for efficient realization.
-Carefully consider the following trade-offs:</p>
+<p>Before choosing cursor-based pagination, consider the following trade-offs:</p>
 <ul>
 <li><p>Usability/framework support:</p>
 <ul>
-<li>offset/limit pagination is more familiar than cursor-based, so it has more framework support and
+<li>Offset / limit based pagination is more known than cursor-based pagination, so it has more framework support and
 is easier to use for API clients</li>
 </ul>
 </li>
@@ -449,25 +448,25 @@ cursor-based navigation is not feasible</li>
 </li>
 <li><p>Variability of data may lead to anomalies in result pages</p>
 <ul>
-<li>Using offset will create duplicates or lead to missed entries if rows are inserted or  deleted,
-respectively, between fetching two pages</li>
+<li>Offset-based pagination may create duplicates or lead to missing entries if rows are inserted or deleted between two subsequent paging requests.</li>
 <li>When using cursor-based pagination, paging cannot continue when the cursor entry has been
 deleted while fetching two pages</li>
 </ul>
 </li>
-<li><p>Performance considerations
-Efficient server-side processing using offset-based pagination is hardly feasible for...</p>
+<li><p>Performance considerations - efficient server-side processing using offset-based pagination is hardly feasible for:</p>
 <ul>
-<li>higher data list volumes, especially if they do not reside in the database&#x2019;s main memory</li>
-<li>sharded or NoSQL databases</li>
+<li>Higher data list volumes, especially if they do not reside in the database&#x2019;s main memory</li>
+<li>Sharded or NoSQL databases</li>
 </ul>
-<p>This also holds for total count and backward iteration support</p>
+</li>
+<li><p>Cursor-based navigation may not work if you need the total count of results and / or backward iteration support</p>
 </li>
 </ul>
 <p>Further reading:</p>
 <ul>
 <li><a href="https://dev.twitter.com/rest/public/timelines" target="_blank">Twitter</a></li>
 <li><a href="http://use-the-index-luke.com/no-offset" target="_blank">Use the Index, Luke</a></li>
+<li><a href="https://www.citusdata.com/blog/1872-joe-nelson/409-five-ways-paginate-postgres-basic-exotic" target="_blank">Paging in PostgreSQL</a></li>
 </ul>
 <h2 id="could-use-pagination-headers-where-applicable"><a name="could-use-pagination-headers-where-applicable" class="plugin-anchor" href="#could-use-pagination-headers-where-applicable"><span class="fa fa-link"></span></a><span style="color:green;font-weight:bold">Could:</span> Use Pagination Headers Where Applicable</h2>
 <ul>
