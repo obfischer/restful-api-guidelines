@@ -52,7 +52,7 @@
     <body>
         
         
-    <div class="book" data-level="8" data-chapter-title="Resources" data-filepath="resources/Resources.md" data-basepath=".." data-revision="Fri Jun 24 2016 15:02:11 GMT+0000 (UTC)" data-innerlanguage="">
+    <div class="book" data-level="8" data-chapter-title="Resources" data-filepath="resources/Resources.md" data-basepath=".." data-revision="Tue Jun 28 2016 10:01:21 GMT+0000 (UTC)" data-innerlanguage="">
     
 
 <div class="book-summary">
@@ -442,7 +442,7 @@ In URLs, use only nouns.</p>
 <pre><code>/customer/1681e6b88ec1
 /sales-order/5273gh3k525a
 </code></pre><h2 id="should-limit-of-resources"><a name="should-limit-of-resources" class="plugin-anchor" href="#should-limit-of-resources"><span class="fa fa-link"></span></a><span style="color:darkgoldenrod;font-weight:bold">Should:</span> Limit of Resources</h2>
-<p>To keep maintenance manageable, and to avoid violations of the &#x201C;separation of concern&#x201D; principle, an API should not expose more than 16 resources. If you exceed 16 resources, first check if you can split them into separate subdomains with distinct APIs.</p>
+<p>To keep maintenance and service evolution manageable, we should follow &quot;functional segmentation&quot; and &quot;separation of concern&quot; design principles and do not mix different business functionalities in same microservice API definition. In this sense the number of resources exposed via API should be limited - our experience is that a typical range for a functional focussed good API is some 4-8 different resources. There may be exceptions with more complex business domains that require more resources, but you should first check if you can split them into separate subdomains with distinct APIs.</p>
 <h2 id="should-limit-of-subresource-levels"><a name="should-limit-of-subresource-levels" class="plugin-anchor" href="#should-limit-of-subresource-levels"><span class="fa fa-link"></span></a><span style="color:darkgoldenrod;font-weight:bold">Should:</span> Limit of Sub-Resource Levels</h2>
 <p>There are main resources (with root url paths) and sub-resources (or &#x201C;nested&#x201D; resources with non-root urls paths). Use sub-resources if their life cycle is (loosely) coupled to the main resource, i.e. the main resource works as collection resource of the subresource entities. You should use &lt;= 3 sub-resource (nesting) levels -- more levels increase API complexity and url path length. (Remember, some popular web browsers do not support URLs of more than 2000 characters)</p>
 
