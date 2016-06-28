@@ -52,7 +52,7 @@
     <body>
         
         
-    <div class="book" data-level="13" data-chapter-title="Data Formats" data-filepath="data-formats/DataFormats.md" data-basepath=".." data-revision="Tue Jun 28 2016 10:01:21 GMT+0000 (UTC)" data-innerlanguage="">
+    <div class="book" data-level="13" data-chapter-title="Data Formats" data-filepath="data-formats/DataFormats.md" data-basepath=".." data-revision="Tue Jun 28 2016 20:31:27 GMT+0000 (UTC)" data-innerlanguage="">
     
 
 <div class="book-summary">
@@ -416,7 +416,9 @@
                         <h1 id="data-formats"><a name="data-formats" class="plugin-anchor" href="#data-formats"><span class="fa fa-link"></span></a>Data Formats</h1>
 <h2 id="must-use-json-as-the-body-payload"><a name="must-use-json-as-the-body-payload" class="plugin-anchor" href="#must-use-json-as-the-body-payload"><span class="fa fa-link"></span></a><span style="color:red;font-weight:bold">Must:</span> Use JSON as the Body Payload</h2>
 <p>JSON-encode the body payload. The JSON payload must follow <a href="https://tools.ietf.org/html/rfc7159" target="_blank">RFC-7159</a> by having
-(if possible) a serialized object or array as the top-level object.</p>
+(if possible) a serialized object as the top-level structure, since it would allow for future extension.
+This also applies for collection resources where one naturally would assume an array. See the
+<a href="../pagination/Pagination.html#could-use-pagination-links-where-applicable">pagination</a> section for an example.</p>
 <h2 id="must-use-standard-date-and-time-formats"><a name="must-use-standard-date-and-time-formats" class="plugin-anchor" href="#must-use-standard-date-and-time-formats"><span class="fa fa-link"></span></a><span style="color:red;font-weight:bold">Must:</span> Use Standard Date and Time Formats</h2>
 <h3 id="json-payload"><a name="json-payload" class="plugin-anchor" href="#json-payload"><span class="fa fa-link"></span></a>JSON Payload</h3>
 <p>Read more about date and time format in <a href="../json-guidelines/JsonGuidelines.html#date-property-values-should-conform-to-rfc-3399">Json Guideline</a>.</p>
